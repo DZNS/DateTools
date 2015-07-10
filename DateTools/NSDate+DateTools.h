@@ -21,14 +21,21 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #ifndef DateToolsLocalizedStrings
+
+#define DCLoaclizedString(key) \
+    [NSDate dc_localizedStringForKey:key]
+
 #define DateToolsLocalizedStrings(key) \
-NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[[[NSBundle bundleForClass:[DTError class]] resourcePath] stringByAppendingPathComponent:@"DateTools.bundle"]], nil)
+    NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[[[NSBundle bundleForClass:[DTError class]] resourcePath] stringByAppendingPathComponent:@"DateTools.bundle"]], nil)
+
 #endif
 
 #import <Foundation/Foundation.h>
 #import "DTConstants.h"
 
 @interface NSDate (DateTools)
+
++ (NSString *)dc_localizedStringForKey:(NSString *)key;
 
 #pragma mark - Time Ago
 + (NSString*)timeAgoSinceDate:(NSDate*)date;
